@@ -1,116 +1,107 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> Rock Paper Sissor </title>
+    <title> Stone Paper Sissor </title>
   </head>
   <body>
-    <p> Rock Paper Sissor Game </p>
+    <p> Stone Paper Sissor Game </p>
     <button onclick="
-      var ComputerMove = pickComputerMove();
-      let result1 = '';
-      if (ComputerMove === 'Rock')
+      
+      var AComputerMove = pickComputerMove();
+      var result = '';
+      
+      /* Logic to decide win loose or tie */
+      if (AComputerMove === 'Rock')
       {
-        result1 = 'Tie.'
+        result = 'Tie.'
        
       }
-      else if (ComputerMove === 'Paper')
+      else if (AComputerMove === 'Paper')
       {
-        result1 = 'You loose!'
+        result = 'You loose!'
        
       }
-      else if (ComputerMove === 'Sissor')
+      else if (AComputerMove === 'Sissor')
       {
-        result1 = 'You Win !!'
+        result = 'You Win !!'
         
       }
-      if (result1 === 'You Win !!')
-      {
-        score.wins = score.wins + 1;
-      }
-      else if (result1 ===  'You loose!')
-      {
-        score.losses = score.losses + 1;
-      }
-      else if (result1 === 'Tie.')
-      {
-        score.ties = score.ties + 1
-      }
-      alert (`You picked Rock. Computer picked ${ComputerMove}. 
-      ${result1} 
-Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
-console.log(score);
-    "> ROCK </button>
-    <button onclick="
-      var ComputerMove = pickComputerMove();
-      let result2 = '';
-      if (ComputerMove === 'Rock')
-      {
-        result2 = 'You Win !!'
-      
-      }
-      else if (ComputerMove === 'Paper')
-      {
-        result2 = 'Tie.'
-      
-      }
-      else if (ComputerMove === 'Sissor')
-      {
-        result2 = 'You loose!'
-        
-      }
-      if (result2 === 'You Win !!')
-      {
-        score.wins = score.wins + 1;
-      }
-      else if (result2 ===  'You loose!')
-      {
-        score.losses = score.losses + 1;
-      }
-      else if (result2 === 'Tie.')
-      {
-        score.ties = score.ties + 1
-      }
-      alert (`You picked Rock. Computer picked ${ComputerMove}. 
-      ${result2} 
-Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
-console.log(score);    
-  "> PAPER </button>
+      console.log(result);
+      /* Call the scorecard function */
+      scoreCard(result);
+
+      /* Display the results */
+     
+      alert (`You picked Stone. Computer picked ${AComputerMove}. 
+      ${result} 
+      Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+      console.log(score);  
+     
+    "> STONE </button>
+
 
     <button onclick="
-    var ComputerMove = pickComputerMove();
-    let result3 = '';
-    if (ComputerMove === 'Rock')
+      var AComputerMove = pickComputerMove();
+      
+      var result = '';
+      if (AComputerMove === 'Rock')
+      {
+        result = 'You Win !!'
+      
+      }
+      else if (AComputerMove === 'Paper')
+      {
+        result = 'Tie.'
+      
+      }
+      else if (AComputerMove === 'Sissor')
+      {
+        result = 'You loose!'
+        
+      }
+      console.log(result);
+      /* Call the scorecard function */
+      scoreCard(result);
+
+      /* Display the results */
+      alert (`You picked Paper. Computer picked ${AComputerMove}. 
+      ${result} 
+      Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+      console.log(score);    
+  "> PAPER </button>
+
+
+    <button onclick="
+    var AComputerMove = pickComputerMove();
+    
+    var result = '';
+    if (AComputerMove === 'Rock')
     {
-      result3 = 'You loose!'
+      result = 'You loose!'
     
     }
-    else if (ComputerMove === 'Paper')
+    else if (AComputerMove === 'Paper')
     {
-      result3 = 'You Win !!'
+      result = 'You Win !!'
     
     }
-    else if (ComputerMove === 'Sissor')
+    else if (AComputerMove === 'Sissor')
     {
-      result3 = 'Tie.'
+      result = 'Tie.'
       
     }
-    if (result3 === 'You Win !!')
-      {
-        score.wins = score.wins + 1;
-      }
-      else if (result3 ===  'You loose!')
-      {
-        score.losses = score.losses + 1;
-      }
-      else if (result3 === 'Tie.')
-      {
-        score.ties = score.ties + 1
-      }
-      alert (`You picked Rock. Computer picked ${ComputerMove}. 
-      ${result3} 
-Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
-console.log(score);
+    console.log(result);
+
+      /* Call the scorecard function */
+      scoreCard(result);
+
+      /* Display the results */
+      alert (`You picked Sissor. Computer picked ${AComputerMove}. 
+      ${result} 
+      Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+      console.log(score);
 "> Sissor </button>
+
     <button onclick="
     score.wins = 0;
     score.losses = 0;
@@ -120,13 +111,16 @@ console.log(score);
    Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`)
    console.log(score);
     "> Reset Score </button>
+
     <script>
+      /* score object creation */
       const score = {
         wins: 0,
         losses: 0,
         ties: 0
       };
       console.log(score);
+      
       /* Creating function */
       function pickComputerMove() 
       {
@@ -145,8 +139,25 @@ console.log(score);
         {
             ComputerMove = 'Sissor';
         }
-        
+      console.log(ComputerMove); 
       return ComputerMove;      
+      }
+
+      function scoreCard (result)
+      {
+           /** Maintain the score card */
+          if (result === 'You Win !!')
+          {
+            score.wins = score.wins + 1;
+          }
+          else if (result ===  'You loose!')
+          {
+            score.losses = score.losses + 1;
+          }
+          else if (result === 'Tie.')
+          {
+            score.ties = score.ties + 1
+          }
       }
     </script>
   </body>
