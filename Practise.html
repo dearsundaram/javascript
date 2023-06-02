@@ -1,0 +1,60 @@
+<html>
+<head>
+<body>
+  <script>
+      a = 100;
+      b = 100;
+      console.log(a===b);
+
+      object1 = { message: 'Hello' };
+
+      object2 = { message: 'Hello' };
+
+      console.log(object1 === object2);    
+      object1 = object2;
+      console.log(object1 === object2);      
+      console.log(object2.message);
+
+      
+      object1 = { message: 'Hello', price: 100 }
+      console.log(object1);
+
+      // Destructuring concept - Convert properties inside the object into a separate variables
+
+                            //const {message} = object1;
+                            //console.log(message);  
+                            //const { price } = object1;
+                            //console.log(price);
+      const {message,price} = object1;  // message and price property of object1 is now converted to individual variables as message and price
+      console.log(message);
+      console.log(price);
+
+
+      // Shorthand property - If the property and the value of the property is same, you can just keep one alone..
+      const object3 =  {
+       // message: message    // Assign message property of object3 with the message varaible (destructured from previous step)
+        message,             // Shorthand property comes in to play
+        price,                // Shorthand property comes in to play
+       // method: function function1(){     //create a method inside the object
+        //    console.log('method');
+       // }
+
+        method(){         // Using shorthand method syntax instead of explicitly defining function function1()
+          console.log("shorthand Method syntax");
+        }
+      };
+      console.log(object3);
+      object3.method();     // Call the method
+
+
+      
+
+  </script>
+
+</body>
+</head>
+</html>
+
+
+
+ 
