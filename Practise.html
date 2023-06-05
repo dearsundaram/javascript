@@ -2,6 +2,43 @@
 <head>
 <body>
   <script>
+      const product = {
+        name: 'shirt',
+        ['delivery-time']: '1 day',  //bracket is used as - will be considered as numeric in js
+        rating: {                    // Nested object.. rating is an object which is placed inside Product object
+          stars: 4.5,
+          count: 200
+        },
+        verified(count){             // Creating a method called verified by passing count as a parameter
+          if (count >= 75)
+          {
+            console.log("Amazon verified Product");
+          }
+          else
+          {
+            console.log("Buy at your own risk");
+          }
+        }
+      };
+
+      // Convert javascript object to JSON object
+        console.log('JSON syntax of product object');
+        console.log(JSON.stringify(product));
+        console.log(typeof(JSON.stringify(product)));
+        const jsonString = JSON.stringify(product);
+      
+        // Convert JSON to javascript object
+        console.log(JSON.parse(jsonString));
+
+
+      console.log(product.name);
+      console.log(product['delivery-time']);
+      console.log(product.rating);
+      console.log(product.rating.count);
+      product.verified(product.rating.count);
+
+
+
       a = 100;
       b = 100;
       console.log(a===b);

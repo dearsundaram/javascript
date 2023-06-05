@@ -103,24 +103,36 @@
 "> Sissor </button>
 
     <button onclick="
+    localStorage.removeItem('message');
+       
     score.wins = 0;
     score.losses = 0;
     score.ties = 0;
-
     alert(`Scores Reset !!
-   Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`)
-   console.log(score);
+    Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`)
+    console.log(score);
+
     "> Reset Score </button>
 
     <script>
       /* score object creation */
-      const score = {
+      let score = JSON.parse(localStorage.getItem('message'));
+      
+      if (score === null)
+       {
+        score = {
         wins: 0,
         losses: 0,
         ties: 0
+        };
+        console.log(`The latest score after reset is Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+      }
+      else {
+        console.log(`The latest score is Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
       };
-      console.log(score);
-      
+    
+      // console.log(score);
+          
       /* Creating function */
       function pickComputerMove() 
       {
@@ -158,6 +170,9 @@
           {
             score.ties = score.ties + 1
           }
+        const myScore = JSON.stringify(score);
+        localStorage.setItem('message',myScore);
+        
       }
     </script>
   </body>
