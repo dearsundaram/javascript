@@ -8,8 +8,44 @@
     <button onclick="
       subscribe();    
     " class="js-subscribe-button">Subscribe</button>
+    <p> Amazon Shipping Calculator </p>
+    <input placeholder="Cost of order"
+      class="js-cost-input" 
+      onkeydown=" handleCostKeydown(event)"      
+    >
+    <button onclick=" 
+      calculateTotal();
+    
+    ">Calculate</button>
+    <p class="js-total"
+
+    ></p>
 
    <script>
+        function handleCostKeydown(event)
+        {
+           if (event.key === 'Enter')
+          {
+            calculateTotal();
+          }
+        }
+
+        function calculateTotal()
+        {
+          const inputElement = document.querySelector('.js-cost-input');
+          let t_cost = inputElement.value;   //Calculates the value from input element
+          console.log(typeof(t_cost));
+          // Covert cost which whill be in string to number
+          cost = Number(t_cost);
+          if (cost < 40){
+            cost = cost + 10;
+            console.log(cost);
+          }
+
+          document.querySelector('.js-total')
+            .innerHTML = `$${cost}`
+          
+        }
         function subscribe()
         {
               const buttonElement = document.querySelector('.js-subscribe-button')
